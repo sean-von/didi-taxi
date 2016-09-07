@@ -10,4 +10,5 @@ public interface Constant {
     String DIDI_TIME_FORMAT = "HH:mm";
 
     String DIDI_TIME_PATTERN = "[0-9:]+";
+    String DIDI_COST_PATTERN = "[0-9\\.]+";
 }

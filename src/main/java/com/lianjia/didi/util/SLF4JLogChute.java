@@ -6,17 +6,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SLF4JLogChute implements LogChute {
-	 
+
     private static final String RUNTIME_LOG_SLF4J_LOGGER = "runtime.log.logsystem.slf4j.logger";
- 
+
     private Logger logger = null;
- 
+
     /**
      * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
      */
     public void init(RuntimeServices rs) throws Exception {
         String name = (String) rs.getProperty(RUNTIME_LOG_SLF4J_LOGGER);
         if (name != null) {
+
             logger = LoggerFactory.getLogger(name);
             log(DEBUG_ID, "SLF4JLogChute using logger '" + logger.getName() + '\'');
         } else {
@@ -24,7 +25,7 @@ public class SLF4JLogChute implements LogChute {
             log(DEBUG_ID, "SLF4JLogChute using logger '" + logger.getClass() + '\'');
         }
     }
- 
+
     /**
      * @see org.apache.velocity.runtime.log.LogChute#log(int, String)
      */
@@ -72,7 +73,7 @@ public class SLF4JLogChute implements LogChute {
                 break;
         }
     }
- 
+
     /**
      * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
      */

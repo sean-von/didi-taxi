@@ -10,31 +10,31 @@
 
     <!-- 默认注解映射支持 -->
     <mvc:annotation-driven/>
-    
+
     <!--  自动扫描bean，把作了注解的类转换为bean -->
-    <context:component-scan base-package="com.lianjia.didi" />
+    <context:component-scan base-package="com.lianjia.didi"/>
 
     <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
         <!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
-        <property name="maxUploadSize" value="200000"/>
+        <property name="maxUploadSize" value="2000000"/>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-        <property name="cache" value="true" />
-        <property name="prefix" value="" />
-        <property name="suffix" value=".vm" />
-        <property name="contentType" value="text/html;charset=UTF-8" />
-        <property name="toolboxConfigLocation" value="WEB-INF/classes/velocitytoolbox.xml" />
-        <property name="order" value="0" />
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="toolboxConfigLocation" value="WEB-INF/classes/velocitytoolbox.xml"/>
+        <property name="order" value="0"/>
     </bean>
 
     <!-- 配置velocity模板引擎 -->
     <bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="configLocation" value="classpath:velocity.properties" />
-        <property name="overrideLogging" value="false" />
+        <property name="configLocation" value="classpath:velocity.properties"/>
+        <property name="overrideLogging" value="false"/>
     </bean>
 
 </beans>

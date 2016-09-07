@@ -18,8 +18,19 @@
 
     function check(){
         var name = $("input[name=name]").val().trim();
+        var costTime = $("input[name=costTime]").val().trim();
+        var file = $("input[name=file]").val().trim();
         if(name == ""){
             alert("姓名不能为空");
+            return false;
+        }
+        if(costTime == ""){
+            alert("单程耗时不能为空");
+            return false;
+        }
+        if(file == ""){
+            alert("文件不能为空");
+            return false;
         }
         return true;
     }
@@ -35,6 +46,11 @@
                     <td><input type="text" name="name"></td>
                 </tr>
                 <tr>
+                    <td><label>单程耗时(分钟)</label></td>
+                    <td><input type="text" name="costTime"></td>
+                </tr>
+                <tr>
+                    <td><label>滴滴行程单</label></td>
                     <td><input type="file" name="file" id="file"></td>
                 </tr>
                 <tr>

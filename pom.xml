@@ -35,6 +35,16 @@
             <artifactId>commons-io</artifactId>
             <version>1.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lianjia.iprd</groupId>
+            <artifactId>iprd-common-view</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

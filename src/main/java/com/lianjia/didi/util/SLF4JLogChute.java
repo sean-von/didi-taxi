@@ -17,7 +17,6 @@ public class SLF4JLogChute implements LogChute {
     public void init(RuntimeServices rs) throws Exception {
         String name = (String) rs.getProperty(RUNTIME_LOG_SLF4J_LOGGER);
         if (name != null) {
-
             logger = LoggerFactory.getLogger(name);
             log(DEBUG_ID, "SLF4JLogChute using logger '" + logger.getName() + '\'');
         } else {

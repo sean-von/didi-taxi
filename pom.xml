@@ -12,7 +12,12 @@
 
     <groupId>com.lianjia.iprd</groupId>
     <artifactId>didi-taxi</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <webapp.directory>${project.build.directory}/webapp</webapp.directory>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -50,17 +55,62 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <webappDirectory>${webapp.directory}</webappDirectory>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/*.*</include>
+                            </includes>
+                            <filtering>false</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.3.0.M2</version>
                 <configuration>
                     <contextXml>src/main/resources/jetty-contexts.xml</contextXml>
+                    <webApp>
+                        <!--<contextPath>
+                            ${webapp.directory}
+                        </contextPath>-->
+                        <resourceBases>
+                            <resourceBase>${webapp.directory}</resourceBase>
+                        </resourceBases>
+                    </webApp>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-archetype-plugin</artifactId>
                 <version>2.2</version>
+            </plugin>
+            <plugin>
+                <groupId>com.ruleoftech</groupId>
+                <artifactId>markdown-page-generator-plugin</artifactId>
+                <version>0.10</version>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <headerHtmlFile>${project.basedir}/src/main/webapp/WEB-INF/base/header.html</headerHtmlFile>
+                    <footerHtmlFile>${project.basedir}/src/main/webapp/WEB-INF/base/footer.html</footerHtmlFile>
+                    <inputDirectory>${basedir}/src/main/webapp/WEB-INF/markdowns/</inputDirectory>
+                    <outputDirectory>${webapp.directory}/html/</outputDirectory>
+                    <pegdownExtensions>TABLES,FENCED_CODE_BLOCKS,AUTOLINKS</pegdownExtensions>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -21,7 +21,7 @@ public class DidiPdfParser {
     /**
      * 匹配一行行程数据
      */
-    private static final Pattern pattern = Pattern.compile("[0-9]{1,2}+\\s快车\\s([0-9\\-]+)\\s([0-9:]+)\\s[^\\s]+\\s+" +
+    private static final Pattern pattern = Pattern.compile("[0-9]{1,2}+\\s[\\u4e00-\\u9fa5]+\\s([0-9\\-]+)\\s([0-9:]+)\\s[^\\s]+\\s+" +
             "[^\\s]+\\s([^\\s]+)\\s([^\\s]+)\\s[0-9\\.]+\\s([0-9\\.]+).*");
 
     public static void main(String[] args) throws IOException, ParseException {
